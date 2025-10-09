@@ -1,5 +1,5 @@
 import React from 'react';
-import '98.css';
+import '98.css/dist/98.css';
 
 interface TaskbarProps {
     activeWindows: {
