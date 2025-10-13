@@ -8,6 +8,18 @@ body {
   font-family: "MS Sans Serif", "Segoe UI", sans-serif;
   overflow: hidden;
 }
+h5 {
+  font-size: 1.1rem;
+}
+.section {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+p,
+li {
+  font-size: 0.9rem;
+  font-family: "Arial", sans-serif !important;
+}
 .desktop {
   width: 100vw;
   height: 100vh;

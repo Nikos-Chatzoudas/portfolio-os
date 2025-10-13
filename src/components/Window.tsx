@@ -25,8 +25,8 @@ const Window: React.FC<WindowProps> = ({
     const [isMaximized, setIsMaximized] = useState(false);
     const [isMinimized, setIsMinimized] = useState(false);
     const [position, setPosition] = useState({ x: initialX, y: initialY });
-    const [size, setSize] = useState({ width: 400, height: 300 });
-    const [prevSize, setPrevSize] = useState({ width: 400, height: 300, x: initialX, y: initialY });
+    const [size, setSize] = useState({ width: 600, height: 500 });
+    const [prevSize, setPrevSize] = useState({ width: 600, height: 500, x: initialX, y: initialY });
 
     const windowRef = useRef<HTMLDivElement>(null);
     const dragStartRef = useRef({ x: 0, y: 0 });

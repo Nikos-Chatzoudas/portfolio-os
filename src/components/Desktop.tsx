@@ -40,8 +40,8 @@ const Desktop: React.FC = () => {
             id: `${appId}-${Date.now()}`,
             title: appId === 'about-me' ? 'About Me' : 'Unknown App',
             isActive: true,
-            x: Math.random() * (window.innerWidth - 400),
-            y: Math.random() * (window.innerHeight - 300),
+            x: Math.random() * (window.innerWidth - 600),
+            y: Math.random() * (window.innerHeight - 500),
             component: appId === 'about-me' ? 'AboutMe' : appId
         };
 
