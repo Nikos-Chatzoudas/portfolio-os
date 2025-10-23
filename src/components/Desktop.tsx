@@ -2,56 +2,91 @@ import React, { useState } from 'react';
 import Taskbar from './Taskbar';
 import Window from './Window';
 import AboutMe from './apps/AboutMe';
+import DosPlayer from './apps/DosPlayer';
+
+interface AppConfig {
+    id: string;
+    title: string;
+    icon: string;
+    component: 'AboutMe' | 'DosPlayer';
+    bundleUrl?: string;
+}
 
 interface WindowState {
     id: string;
+    appId: string;
     title: string;
     isActive: boolean;
     x: number;
     y: number;
-    component: string;
 }
 
+const apps: AppConfig[] = [
+    {
+        id: 'about-me',
+        title: 'About Me',
+        icon: '/icon.png',
+        component: 'AboutMe'
+    },
+    {
+        id: 'pacman',
+        title: 'Pac Man',
+        icon: '/icons/Pacman.png',
+        component: 'DosPlayer',
+        bundleUrl: '/dos-games/pacman.jsdos'
+    },
+    {
+        id: 'dos-game-2',
+        title: 'DOS Game 2',
+        icon: '/icons/Pacman.png',
+        component: 'DosPlayer',
+        bundleUrl: '/dos-games/digger.jsdos'
+    }
+    // Add more apps here
+];
+
 const Desktop: React.FC = () => {
-    const [windows, setWindows] = useState<WindowState[]>([
-        {
-            id: 'about-me',
-            title: 'About Me',
-            isActive: true,
-            x: 100,
-            y: 100,
-            component: 'AboutMe'
-        }
-    ]);
+    const [windows, setWindows] = useState<WindowState[]>([]);
 
     const handleWindowFocus = (id: string) => {
-        setWindows(windows.map(window => ({
-            ...window,
-            isActive: window.id === id
-        })));
+        setWindows(windows.map(w => ({ ...w, isActive: w.id === id })));
     };
 
     const handleWindowClose = (id: string) => {
-        setWindows(prevWindows => prevWindows.filter(window => window.id !== id));
+        setWindows(prev => prev.filter(w => w.id !== id));
     };
 
     const handleIconDoubleClick = (appId: string) => {
-        const newWindow = {
+        const app = apps.find(a => a.id === appId);
+        if (!app) return;
+
+        const newWindow: WindowState = {
             id: `${appId}-${Date.now()}`,
-            title: appId === 'about-me' ? 'About Me' : 'Unknown App',
+            appId: app.id,
+            title: app.title,
             isActive: true,
             x: Math.random() * (window.innerWidth - 600),
-            y: Math.random() * (window.innerHeight - 500),
-            component: appId === 'about-me' ? 'AboutMe' : appId
+            y: Math.random() * (window.innerHeight - 500)
         };
 
         setWindows([...windows.map(w => ({ ...w, isActive: false })), newWindow]);
     };
 
     const renderWindowContent = (window: WindowState) => {
-        switch (window.component) {
+        const app = apps.find(a => a.id === window.appId);
+        if (!app) return <div>Window content not found</div>;
+
+        switch (app.component) {
             case 'AboutMe':
                 return <AboutMe />;
+            case 'DosPlayer':
+                console.log("Rendering DosPlayer for", app.bundleUrl);
+                if (!app.bundleUrl) {
+                    return <div>Missing bundleUrl for {app.title}</div>;
+                }
+                return <div className='test'>
+                    <DosPlayer bundleUrl={app.bundleUrl} />
+                </div>;
             default:
                 return <div>Window content not found</div>;
         }
@@ -59,16 +94,27 @@ const Desktop: React.FC = () => {
 
     return (
         <div className="desktop">
-            <div className="background-image" />
+            <div className="desktop-image" />
             <div className="desktop-content">
-                <div className="desktop-icon" onDoubleClick={() => handleIconDoubleClick('about-me')}>
-                    <img src="/logo.png" alt="About Me" />
-                    <span className="desktop-icon-text">About Me</span>
-                </div>
-                {windows.map((window) => (
+                {apps.map(app => (
+                    <div
+                        key={app.id}
+                        className="desktop-icon"
+                        onDoubleClick={() => handleIconDoubleClick(app.id)}
+                    >
+                        <img src={app.icon} alt={app.title} />
+                        <span className="desktop-icon-text">{app.title}</span>
+                    </div>
+                ))}
+
+                {windows.map(window => (
                     <Window
                         key={window.id}
-                        {...window}
+                        id={window.id}
+                        title={window.title}
+                        isActive={window.isActive}
+                        x={window.x}
+                        y={window.y}
                         onFocus={() => handleWindowFocus(window.id)}
                         onClose={() => handleWindowClose(window.id)}
                     >
@@ -76,10 +122,7 @@ const Desktop: React.FC = () => {
                     </Window>
                 ))}
             </div>
-            <Taskbar
-                activeWindows={windows}
-                onWindowClick={handleWindowFocus}
-            />
+            <Taskbar activeWindows={windows} onWindowClick={handleWindowFocus} />
         </div>
     );
 };

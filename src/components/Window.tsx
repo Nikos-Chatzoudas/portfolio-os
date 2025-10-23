@@ -123,8 +123,10 @@ const Window: React.FC<WindowProps> = ({
             </div>
             <div className="window-body" style={{
                 flex: 1,
+                display: 'flex',
                 overflow: 'auto',
-                height: 'calc(100% - 32px)'
+                height: 'calc(100% - 32px)',
+
             }}>
                 <div className='window-content' >
                     {children}

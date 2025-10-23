@@ -2,13 +2,20 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/x-icon" href="/logo.png" />
-    <title>Portfolio OS</title>
+    <link rel="icon" type="image/x-icon" href="/icon.png" />
+
+    <title>Chatzoudas-OS</title>
+
+    <script src="/js-dos/js-dos.js"></script>
+    <link rel="stylesheet" href="/js-dos/js-dos.css" />
+    <script>
+      emulators.pathPrefix = "/js-dos/";
+    </script>
   </head>
   <body>
     <div id="root"></div>
+
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

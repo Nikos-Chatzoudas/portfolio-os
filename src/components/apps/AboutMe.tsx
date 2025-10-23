@@ -1,13 +1,13 @@
 import React from 'react';
-
+import '98.css/dist/98.css';
 const AboutMe: React.FC = () => {
     return (
-        <div className="window-body">
+        <div className="about-me">
             <div className="field-row">
                 <img
                     src="/me.png"
                     alt="Profile"
-                    style={{ width: '100px', height: '100px', margin: '15px', borderRadius: '2px' }}
+                    style={{ width: '100px', height: '100px', margin: '15px', borderRadius: '2px', border: '2px solid #505050ff' }}
                 />
                 <div>
                     <h4 style={{ marginBottom: '10px' }}>Nick Chatzoudas</h4>
@@ -52,6 +52,12 @@ const AboutMe: React.FC = () => {
                     </ul>
                     <p>These experiences not only honed my technical abilities but also fostered effective communication and
                         presentation skills, vital for conveying complex scientific concepts to diverse audiences."</p>
+                </div>
+                <div className='section'>
+                    <p>Feel free to reach out to me if you have any questions or would like
+                        to discuss a project. I'm always excited to connect with new people
+                        and explore collaboration opportunities.</p>
+                    <button>Contact Me</button>
                 </div>
             </div>
 
