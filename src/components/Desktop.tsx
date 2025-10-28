@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Taskbar from './Taskbar';
 import Window from './Window';
 import AboutMe from './apps/AboutMe';
-import DosPlayer from './apps/DosPlayer';
+
 
 interface AppConfig {
     id: string;
@@ -85,7 +85,7 @@ const Desktop: React.FC = () => {
                     return <div>Missing bundleUrl for {app.title}</div>;
                 }
                 return <div className='test'>
-                    <DosPlayer bundleUrl={app.bundleUrl} />
+
                 </div>;
             default:
                 return <div>Window content not found</div>;
