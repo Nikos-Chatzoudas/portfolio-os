@@ -1,5 +1,6 @@
 import React from 'react';
 import '98.css/dist/98.css';
+
 const AboutMe: React.FC = () => {
     return (
         <div className="about-me">

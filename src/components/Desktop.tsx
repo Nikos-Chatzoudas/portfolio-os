@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 import Taskbar from './Taskbar';
 import Window from './Window';
 import AboutMe from './apps/AboutMe';
+import DosBox from './apps/DosBox';
 
 
 interface AppConfig {
     id: string;
     title: string;
     icon: string;
-    component: 'AboutMe' | 'DosPlayer';
+    component: 'AboutMe' | 'DosBox';
     bundleUrl?: string;
 }
 
@@ -32,15 +33,15 @@ const apps: AppConfig[] = [
         id: 'pacman',
         title: 'Pac Man',
         icon: '/icons/Pacman.png',
-        component: 'DosPlayer',
-        bundleUrl: '/dos-games/pacman.jsdos'
+        component: 'DosBox',
+        bundleUrl: '/roms/pacman.jsdos'
     },
     {
         id: 'dos-game-2',
         title: 'DOS Game 2',
         icon: '/icons/Pacman.png',
-        component: 'DosPlayer',
-        bundleUrl: '/dos-games/digger.jsdos'
+        component: 'DosBox',
+        bundleUrl: '/roms/digger.jsdos'
     }
     // Add more apps here
 ];
@@ -79,14 +80,14 @@ const Desktop: React.FC = () => {
         switch (app.component) {
             case 'AboutMe':
                 return <AboutMe />;
-            case 'DosPlayer':
-                console.log("Rendering DosPlayer for", app.bundleUrl);
+            case 'DosBox':
+                console.log("Rendering DosBox for", app.bundleUrl);
                 if (!app.bundleUrl) {
                     return <div>Missing bundleUrl for {app.title}</div>;
                 }
-                return <div className='test'>
-
-                </div>;
+                return <div>
+                    <DosBox bundleUrl={app.bundleUrl} />
+                </div>
             default:
                 return <div>Window content not found</div>;
         }
