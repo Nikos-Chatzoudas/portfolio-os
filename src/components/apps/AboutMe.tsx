@@ -1,5 +1,6 @@
 import React from 'react';
 import '98.css/dist/98.css';
+import { Weight } from 'lucide-react';
 
 const AboutMe: React.FC = () => {
     return (
@@ -55,10 +56,12 @@ const AboutMe: React.FC = () => {
                         presentation skills, vital for conveying complex scientific concepts to diverse audiences."</p>
                 </div>
                 <div className='section'>
+                    <h4>Contact Me</h4>
                     <p>Feel free to reach out to me if you have any questions or would like
                         to discuss a project. I'm always excited to connect with new people
                         and explore collaboration opportunities.</p>
-                    <button>Contact Me</button>
+                    <button style={{ marginTop: '1rem', marginBottom: '1rem', fontWeight: 'bold' }} onClick={() => window.open('mailto:nick.chatzoudas@gmail.com', '_blank')}>Contact Me</button>
+
                 </div>
             </div>
 

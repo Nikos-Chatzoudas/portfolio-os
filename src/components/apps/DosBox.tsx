@@ -4,6 +4,17 @@ import React from "react";
 export default function DosBox({ bundleUrl }: { bundleUrl: string }) {
     const containerId = "jsdos-container";
     React.useEffect(() => {
+        // Dynamically add js-dos.css link only when DosBox is mounted
+        const linkId = "js-dos-stylesheet";
+        const existingLink = document.getElementById(linkId);
+        if (!existingLink) {
+            const link = document.createElement("link");
+            link.id = linkId;
+            link.rel = "stylesheet";
+            link.href = "/js-dos/js-dos.css";
+            document.head.appendChild(link);
+        }
+
         const container = document.getElementById(containerId);
         if (!container) return;
 
@@ -46,6 +57,13 @@ export default function DosBox({ bundleUrl }: { bundleUrl: string }) {
                 (container as HTMLElement).removeAttribute("data-jsdos-init");
                 while (container.firstChild) {
                     container.removeChild(container.firstChild);
+                }
+
+                // Remove js-dos.css link when component unmounts
+                const linkId = "js-dos-stylesheet";
+                const link = document.getElementById(linkId);
+                if (link) {
+                    link.remove();
                 }
             };
         } catch {
