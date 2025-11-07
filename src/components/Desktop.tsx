@@ -85,9 +85,10 @@ const Desktop: React.FC = () => {
                 if (!app.bundleUrl) {
                     return <div>Missing bundleUrl for {app.title}</div>;
                 }
-                return <div>
+                return (
                     <DosBox bundleUrl={app.bundleUrl} />
-                </div>
+                );
+
             default:
                 return <div>Window content not found</div>;
         }

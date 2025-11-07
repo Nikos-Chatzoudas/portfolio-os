@@ -11,7 +11,8 @@ export default function DosBox({ bundleUrl }: { bundleUrl: string }) {
             const link = document.createElement("link");
             link.id = linkId;
             link.rel = "stylesheet";
-            link.href = "/js-dos/js-dos.css";
+            // Load a minimal, custom stylesheet (not the original full js-dos.css)
+            link.href = "/js-dos/js-dos-min.css";
             document.head.appendChild(link);
         }
 
