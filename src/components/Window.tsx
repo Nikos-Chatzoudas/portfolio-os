@@ -8,6 +8,7 @@ interface WindowProps {
     y: number;
     onFocus: () => void;
     onClose: () => void;
+    type?: string; // Add this prop
     children: React.ReactNode;
 }
 
@@ -19,6 +20,7 @@ const Window: React.FC<WindowProps> = ({
     y: initialY,
     onFocus,
     onClose,
+    type,
     children
 }) => {
     const window_width = 600;
@@ -123,10 +125,8 @@ const Window: React.FC<WindowProps> = ({
                     <button aria-label="Close" onClick={handleClose}></button>
                 </div>
             </div>
-            <div className="window-body" >
-                <div className='window-content' >
-                    {children}
-                </div>
+            <div className={`window-body ${type === 'DosBox' ? 'dosbox' : ''}`}>
+                {children}
             </div>
             {!isMaximized && (
                 <>

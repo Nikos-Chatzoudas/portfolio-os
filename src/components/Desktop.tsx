@@ -88,14 +88,10 @@ const Desktop: React.FC = () => {
             case 'AboutMe':
                 return <AboutMe />;
             case 'DosBox':
-                console.log("Rendering DosBox for", app.bundleUrl);
                 if (!app.bundleUrl) {
                     return <div>Missing bundleUrl for {app.title}</div>;
                 }
-                return (
-                    <DosBox bundleUrl={app.bundleUrl} />
-                );
-
+                return <DosBox bundleUrl={app.bundleUrl} />;
             default:
                 return <div>Window content not found</div>;
         }
@@ -124,6 +120,7 @@ const Desktop: React.FC = () => {
                         isActive={window.isActive}
                         x={window.x}
                         y={window.y}
+                        type={apps.find(a => a.id === window.appId)?.component} // Add this line
                         onFocus={() => handleWindowFocus(window.id)}
                         onClose={() => handleWindowClose(window.id)}
                     >

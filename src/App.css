@@ -258,6 +258,10 @@ li {
   height: 100%;
 }
 
+.window-body.dosbox {
+  overflow: hidden;
+}
+
 .desktop-icon {
   display: flex;
   flex-direction: column;
