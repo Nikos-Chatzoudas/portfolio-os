@@ -1,6 +1,6 @@
 @font-face {
-  font-family: "PxPlus IBM VGA8";
-  src: url("/fonts/PxPlus_IBM_VGA8.ttf") format("truetype");
+  font-family: "MS Sans Serif";
+  src: url("/fonts/MS Sans Serif.ttf") format("truetype");
   font-smooth: never;
   -webkit-font-smoothing: none;
 }
@@ -291,7 +291,8 @@ li {
 .desktop-icon-text {
   text-shadow: 1px 1px 1px black;
   font-size: 13px;
-  font-family: "PxPlus IBM VGA8", monospace;
+  font-family: "MS Sans Serif";
+  color: gainsboro;
   font-smooth: never;
   -webkit-font-smoothing: none;
 }
