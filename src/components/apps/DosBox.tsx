@@ -43,7 +43,7 @@ export default function DosBox({ bundleUrl }: { bundleUrl: string }) {
                 return;
             }
 
-            const runPromise = w.Dos(container, { ci: false, headless: true, save: false }).run(bundleUrl);
+            const runPromise = w.Dos(container,).run(bundleUrl);
 
             return () => {
                 // Gracefully exit emulator on unmount
@@ -73,6 +73,6 @@ export default function DosBox({ bundleUrl }: { bundleUrl: string }) {
     }, []);
 
     return (
-        <div id={containerId} className="jsdos-headless" style={{ width: "max-content", height: "max-content" }} />
+        <div id={containerId} />
     );
 }

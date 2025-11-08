@@ -2,46 +2,36 @@
    This intentionally replaces the full js-dos.css for lightweight usage.
 */
 
-/* Container used by the DosBox component */
-.jsdos-headless {
-  display: inline-block;
-  background: #000;
-  color: #fff;
-  line-height: 0; /* remove extra spacing */
+.emulator-root {
+  background-color: black;
+
+  height: 100%;
+  width: 100%;
 }
 
-/* Ensure canvas and emulator elements render crisply and scale nicely */
-.jsdos-headless canvas,
-.jsdos-headless .dosbox,
-.jsdos-headless iframe {
-  display: block;
-  image-rendering: pixelated; /* keep pixel-art sharp when scaled */
-  max-width: 100%;
-  height: auto;
+#overflow-hidden {
+  display: flex;
 }
-
-.dosbox {
-  position: relative;
-  overflow: hidden;
-}
-
-/* Basic overlay helper (if js-dos adds overlays) */
-.jsdos-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  pointer-events: none;
-}
-
-/* Small accessibility / selection reset inside emulator */
 .jsdos-headless * {
   user-select: none;
+}
+#jsdos-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
 }
 #jsdos-container svg {
   display: none;
 }
 #jsdos-container video {
+  display: none;
+}
+div:has(> .emulator-root) {
+  display: flex;
+  background-color: yellow;
+  height: 100%;
+  width: 100%;
+}
+.emulator-click-to-start-text {
   display: none;
 }

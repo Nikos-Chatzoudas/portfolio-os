@@ -21,12 +21,14 @@ const Window: React.FC<WindowProps> = ({
     onClose,
     children
 }) => {
+    const window_width = 600;
+    const window_height = 500;
     const [isDragging, setIsDragging] = useState(false);
     const [isMaximized, setIsMaximized] = useState(false);
     const [isMinimized, setIsMinimized] = useState(false);
     const [position, setPosition] = useState({ x: initialX, y: initialY });
-    const [size, setSize] = useState({ width: 600, height: 500 });
-    const [prevSize, setPrevSize] = useState({ width: 600, height: 500, x: initialX, y: initialY });
+    const [size, setSize] = useState({ width: window_width, height: window_height });
+    const [prevSize, setPrevSize] = useState({ width: window_width, height: window_height, x: initialX, y: initialY });
 
     const windowRef = useRef<HTMLDivElement>(null);
     const dragStartRef = useRef({ x: 0, y: 0 });
@@ -121,13 +123,7 @@ const Window: React.FC<WindowProps> = ({
                     <button aria-label="Close" onClick={handleClose}></button>
                 </div>
             </div>
-            <div className="window-body" style={{
-                flex: 1,
-                display: 'flex',
-                overflow: 'auto',
-                height: 'calc(100% - 32px)',
-
-            }}>
+            <div className="window-body" >
                 <div className='window-content' >
                     {children}
                 </div>
