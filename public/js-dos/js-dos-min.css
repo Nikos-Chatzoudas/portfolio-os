@@ -15,15 +15,15 @@
 .jsdos-headless * {
   user-select: none;
 }
-#jsdos-container {
+.dosbox-window {
   width: 100%;
   height: 100%;
   display: flex;
 }
-#jsdos-container svg {
+.dosbox-window svg {
   display: none;
 }
-#jsdos-container video {
+.dosbox-window video {
   display: none;
 }
 div:has(> .emulator-root) {

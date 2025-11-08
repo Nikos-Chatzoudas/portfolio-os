@@ -31,7 +31,7 @@ const apps: AppConfig[] = [
     },
     {
         id: 'pacman',
-        title: 'Pac Man',
+        title: 'PacMan',
         icon: '/icons/Pacman.png',
         component: 'DosBox',
         bundleUrl: '/roms/pacman.jsdos'

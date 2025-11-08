@@ -1,21 +1,11 @@
 import "../../App.css";
+import "../../../public/js-dos/js-dos-min.css";
 import React from "react";
 
 export default function DosBox({ bundleUrl }: { bundleUrl: string }) {
-    const containerId = "jsdos-container";
+    // Generate a unique ID for each DosBox instance
+    const containerId = React.useMemo(() => `jsdos-container-${Math.random().toString(36).substr(2, 9)}`, []);
     React.useEffect(() => {
-        // Dynamically add js-dos.css link only when DosBox is mounted
-        const linkId = "js-dos-stylesheet";
-        const existingLink = document.getElementById(linkId);
-        if (!existingLink) {
-            const link = document.createElement("link");
-            link.id = linkId;
-            link.rel = "stylesheet";
-            // Load a minimal, custom stylesheet (not the original full js-dos.css)
-            link.href = "/js-dos/js-dos-min.css";
-            document.head.appendChild(link);
-        }
-
         const container = document.getElementById(containerId);
         if (!container) return;
 
@@ -60,12 +50,6 @@ export default function DosBox({ bundleUrl }: { bundleUrl: string }) {
                     container.removeChild(container.firstChild);
                 }
 
-                // Remove js-dos.css link when component unmounts
-                const linkId = "js-dos-stylesheet";
-                const link = document.getElementById(linkId);
-                if (link) {
-                    link.remove();
-                }
             };
         } catch {
             // no-op
@@ -73,6 +57,6 @@ export default function DosBox({ bundleUrl }: { bundleUrl: string }) {
     }, []);
 
     return (
-        <div id={containerId} />
+        <div id={containerId} className="dosbox-window" />
     );
 }
