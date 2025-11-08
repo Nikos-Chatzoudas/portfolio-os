@@ -37,11 +37,18 @@ const apps: AppConfig[] = [
         bundleUrl: '/roms/pacman.jsdos'
     },
     {
-        id: 'dos-game-2',
-        title: 'DOS Game 2',
-        icon: '/icons/Pacman.png',
+        id: 'solitaire',
+        title: 'Solitaire',
+        icon: '/icons/Solitaire.png',
         component: 'DosBox',
-        bundleUrl: '/roms/digger.jsdos'
+        bundleUrl: '/roms/solitaire.jsdos'
+    },
+    {
+        id: 'doom',
+        title: 'Doom',
+        icon: '/icons/Doom.png',
+        component: 'DosBox',
+        bundleUrl: '/roms/doom.jsdos'
     }
     // Add more apps here
 ];
@@ -104,7 +111,7 @@ const Desktop: React.FC = () => {
                         className="desktop-icon"
                         onDoubleClick={() => handleIconDoubleClick(app.id)}
                     >
-                        <img src={app.icon} alt={app.title} />
+                        <img className="desktop-icon-image" src={app.icon} alt={app.title} />
                         <span className="desktop-icon-text">{app.title}</span>
                     </div>
                 ))}
