@@ -1,6 +1,5 @@
 import React from 'react';
 import '98.css/dist/98.css';
-import { Weight } from 'lucide-react';
 
 const AboutMe: React.FC = () => {
     return (
@@ -9,7 +8,7 @@ const AboutMe: React.FC = () => {
                 <img
                     src="/me.png"
                     alt="Profile"
-                    style={{ width: '100px', height: '100px', margin: '15px', borderRadius: '2px', border: '2px solid #505050ff' }}
+                    style={{ width: '150px', height: '150px', margin: '15px', borderRadius: '2px', border: '3px solid #000000' }}
                 />
                 <div>
                     <h4 style={{ marginBottom: '10px' }}>Nick Chatzoudas</h4>
