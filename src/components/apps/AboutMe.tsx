@@ -12,7 +12,7 @@ const AboutMe: React.FC = () => {
                 />
                 <div>
                     <h4 style={{ marginBottom: '10px' }}>Nick Chatzoudas</h4>
-                    <p>Computer Science Student</p>
+                    <p style={{ fontWeight: "bold" }}>Digital Systems Student</p>
                 </div>
             </div>
             <hr />
