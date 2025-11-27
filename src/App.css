@@ -302,10 +302,13 @@ li {
   height: 100%;
 }
 .about-me {
-  padding: 10px;
+  padding: 20px;
 }
 
 .desktop-icon-image {
   transform: scale(1.2);
   margin: 10px;
+}
+ul {
+  list-style-type: none;
 }

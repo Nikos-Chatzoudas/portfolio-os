@@ -3,6 +3,7 @@ import React, { useState, useRef, useEffect } from 'react';
 interface WindowProps {
     id: string;
     title: string;
+    icon?: string;
     isActive: boolean;
     x: number;
     y: number;
@@ -15,6 +16,7 @@ interface WindowProps {
 const Window: React.FC<WindowProps> = ({
     id,
     title,
+    icon,
     isActive,
     x: initialX,
     y: initialY,
@@ -118,7 +120,10 @@ const Window: React.FC<WindowProps> = ({
             onClick={onFocus}
         >
             <div className="title-bar" onMouseDown={handleDragStart}>
-                <div className="title-bar-text">{title}</div>
+                <div className="title-bar-text">
+                    {icon && <img src={icon} alt="" style={{ width: '16px', height: '16px', marginRight: '6px', verticalAlign: 'middle' }} />}
+                    {title}
+                </div>
                 <div className="title-bar-controls">
                     <button aria-label="Minimize" onClick={handleMinimize}></button>
                     <button aria-label="Maximize" onClick={handleMaximize}></button>

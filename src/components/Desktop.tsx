@@ -55,7 +55,14 @@ const apps: AppConfig[] = [
 ];
 
 const Desktop: React.FC = () => {
-    const [windows, setWindows] = useState<WindowState[]>([]);
+    const [windows, setWindows] = useState<WindowState[]>([{
+        id: 'about-me-auto',
+        appId: 'about-me',
+        title: 'About Me',
+        isActive: true,
+        x: (window.innerWidth / 2) - 300,
+        y: (window.innerHeight / 2) - 250
+    }]);
 
     const handleWindowFocus = (id: string) => {
         setWindows(windows.map(w => ({ ...w, isActive: w.id === id })));
@@ -118,6 +125,7 @@ const Desktop: React.FC = () => {
                         key={window.id}
                         id={window.id}
                         title={window.title}
+                        icon={apps.find(a => a.id === window.appId)?.icon}
                         isActive={window.isActive}
                         x={window.x}
                         y={window.y}
