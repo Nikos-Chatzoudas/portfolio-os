@@ -6,7 +6,7 @@ import DosBox from './apps/DosBox';
 
 
 
-interface AppConfig {
+export interface AppConfig {
     id: string;
     title: string;
     icon: string;
@@ -144,7 +144,12 @@ const Desktop: React.FC = () => {
                     </Window>
                 ))}
             </div>
-            <Taskbar activeWindows={windows} onWindowClick={handleWindowFocus} />
+            <Taskbar
+                activeWindows={windows}
+                onWindowClick={handleWindowFocus}
+                apps={apps}
+                onStartApp={handleIconDoubleClick}
+            />
         </div>
     );
 };
