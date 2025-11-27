@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import '98.css/dist/98.css';
 
 interface TaskbarProps {
@@ -11,6 +11,16 @@ interface TaskbarProps {
 }
 
 const Taskbar: React.FC<TaskbarProps> = ({ activeWindows, onWindowClick }) => {
+    const [time, setTime] = useState(new Date());
+
+    useEffect(() => {
+        const timer = setInterval(() => {
+            setTime(new Date());
+        }, 1000);
+
+        return () => clearInterval(timer);
+    }, []);
+
     return (
         <div className="taskbar">
 
@@ -39,7 +49,7 @@ const Taskbar: React.FC<TaskbarProps> = ({ activeWindows, onWindowClick }) => {
             </div>
             <div className="system-tray">
                 <div className="time">
-                    {new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                    {time.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                 </div>
             </div>
         </div>

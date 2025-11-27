@@ -58,13 +58,16 @@ const Desktop: React.FC = () => {
     const [windows, setWindows] = useState<WindowState[]>(() => {
         const width = 600;
         const height = 500;
+        const winWidth = window.innerWidth > 0 ? window.innerWidth : 1024;
+        const winHeight = window.innerHeight > 0 ? window.innerHeight : 768;
+
         return [{
             id: 'about-me-auto',
             appId: 'about-me',
             title: 'About Me',
             isActive: true,
-            x: Math.max(0, (window.innerWidth - width) / 2),
-            y: Math.max(0, (window.innerHeight - height) / 2)
+            x: (winWidth - width) / 2,
+            y: (winHeight - height) / 2
         }];
     });
 
