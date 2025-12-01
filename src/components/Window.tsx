@@ -14,7 +14,6 @@ interface WindowProps {
 }
 
 const Window: React.FC<WindowProps> = ({
-    id,
     title,
     icon,
     isActive,
